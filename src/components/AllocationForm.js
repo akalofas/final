@@ -10,16 +10,17 @@ const AllocationForm = (props) => {
 
     const submitEvent = () => {
 
-            if(cost > remaining) {
-                alert("The value cannot exceed remaining funds  £"+remaining);
-                setCost("");
-                return;
-            }
+        if(cost > remaining) {
+            alert("The value cannot exceed remaining funds  £"+remaining);
+            setCost("");
+            return;
+        }
 
         const expense = {
             name: name,
             cost: parseInt(cost),
         };
+
         if(action === "Reduce") {
             dispatch({
                 type: 'RED_EXPENSE',
@@ -50,13 +51,17 @@ const AllocationForm = (props) => {
                     </select>
 
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
+                        
                         <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
                     </div>
                     <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
                         <option defaultValue value="Add" name="Add">Add</option>
-                        <option value="Reduce" name="Reduce">Reduce</option>
+                        <option defaultValue value="Reduce" name="Reduce">Reduce</option>
                     </select>
-
+                   
+                        <tr>
+                         <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  $</b></td>
+                         <td>
                     <input
                         required='required'
                         type='number'
@@ -64,11 +69,12 @@ const AllocationForm = (props) => {
                         value={cost}
                         style={{ marginLeft: '2rem' , size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
-                        </input>
-
+                        </input></td>
+                        <td>
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
-                    </button>
+                    </button></td>
+                    </tr>
                 </div>
             </div>
 
